@@ -1,0 +1,258 @@
+<?php
+global $version;
+$version="2.4.5";
+include_once("dbconfig.php");
+
+session_start();
+
+
+if (isset($_SESSION['Name']) && $_SESSION['Name'] == "Jim" || $_SESSION['Name']=="Super Admin")
+
+{
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Shako-River</title>
+<link rel="icon" href="images/favicon.png" sizes="32x32" type="image/png"> 
+
+    
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+
+  
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <img style="height: 50px" src="images/logo.png"></img>
+      <p style="color: white;">Version: <?php echo $version;?> </p>
+    </div>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" href='add_data.php'>Invoice</a></li>
+        <li class="nav-item active"><a class="nav-link" href='add_data2.php'>Old Invoice</a></li>
+        <li class="nav-item active"><a class="nav-link" href='/ticket/admin'>Ticket</a></li>
+        <li class="nav-item active"><a class="nav-link" href='call.php'>Call</a></li>
+      <li class="nav-item active"><a class="nav-link"  href='report.php'>Report</a></li>
+      <li class="nav-item active"><a class="nav-link"  href='format.php'>Format</a></li>
+        
+    </ul>
+
+
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"><?php echo $_SESSION["Name"]; ?></button>
+
+    <div class="dropdown-menu">
+    <!--  <a class="dropdown-item" href="#">Link 1</a> -->
+    <!--  <a class="dropdown-item" href="#">Link 2</a> -->
+      <a class="dropdown-item" href="logout.php">Logout</a>
+    </div>
+  </div>
+
+
+
+  </div>
+</nav>
+
+</body>
+</html>
+
+
+
+
+
+<?php
+}
+else if (isset($_SESSION['type']) && $_SESSION['type'] == "admin")
+
+{
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Shako-River</title>
+<link rel="icon" href="images/favicon.png" sizes="32x32" type="image/png"> 
+
+    
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+
+  
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <img style="height: 50px" src="images/logo.png"></img>
+      <p style="color: white;">Version: <?php echo $version;?> </p>
+    </div>
+
+
+    <ul class="navbar-nav">
+                <li class="nav-item active"><a class="nav-link" href='add_data.php'>Invoice</a></li>
+        <li class="nav-item active"><a class="nav-link" href='add_data2.php'>Old Invoice</a></li>
+        <li class="nav-item active"><a class="nav-link" href='/ticket/admin'>Ticket</a></li>
+        <li class="nav-item active"><a class="nav-link" href='call.php'>Call</a></li>
+      <li class="nav-item active"><a class="nav-link"  href='report.php'>Report</a></li>
+        
+    </ul>
+
+
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"><?php echo $_SESSION["Name"]; ?></button>
+
+    <div class="dropdown-menu">
+    <!--  <a class="dropdown-item" href="#">Link 1</a> -->
+    <!--  <a class="dropdown-item" href="#">Link 2</a> -->
+      <a class="dropdown-item" href="logout.php">Logout</a>
+    </div>
+  </div>
+
+
+
+  </div>
+</nav>
+
+</body>
+</html>
+
+
+
+<?php
+}
+else if (isset($_SESSION['type']) && $_SESSION['type'] == "user")
+
+{
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Shako-River</title>
+<link rel="icon" href="images/favicon.png" sizes="32x32" type="image/png"> 
+    
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+
+  
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <img style="height: 50px" src="images/logo.png"></img>
+    </div>
+
+
+    <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" href='add_data.php'>Invoice</a></li>
+        <li class="nav-item active"><a class="nav-link" href='add_data2.php'>Old Invoice</a></li>
+        <li class="nav-item active"><a class="nav-link" href='/ticket'>Ticket</a></li>
+      <!--<li class="nav-item active"><a class="nav-link" href='call.php'>Call</a></li> -->
+      <!--  <li class="nav-item active"><a class="nav-link"  href='report.php'>Report</a></li> -->
+        
+    </ul>
+
+
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"><?php echo $_SESSION["Name"]; ?></button>
+
+    <div class="dropdown-menu">
+    <!--  <a class="dropdown-item" href="#">Link 1</a> -->
+    <!--  <a class="dropdown-item" href="#">Link 2</a> -->
+      <a class="dropdown-item" href="logout.php">Logout</a>
+    </div>
+  </div>
+
+
+
+  </div>
+</nav>
+
+</body>
+</html>
+
+
+
+
+<?php
+} else {
+    header('Location: disconnect.php');
+
+}
+
+?>

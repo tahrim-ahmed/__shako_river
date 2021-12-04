@@ -1,0 +1,104 @@
+.bs-example{
+	font-family: sans-serif;
+	position: relative;
+	margin: 30px;
+}
+.typeahead, .tt-query, .tt-hint {
+	border: 1px solid #CCCCCC;
+	border-radius: 4px;
+	font-size: 15px;
+
+	
+	outline: medium none;
+	padding: 8px 12px;
+	width : 100%;
+	
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+.typeahead:focus {
+	border: 2px solid #0097CF;
+}
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
+.tt-dropdown-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 12px;
+	width: 100%;
+	text-align: left;
+}
+.tt-suggestion {
+	font-size: 15px;
+	line-height: 20px;
+	padding: 3px 10px;
+}
+.tt-suggestion.tt-is-under-cursor {
+	color: #0097CF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+
+
+<style>
+	
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.column {
+  float: left;
+  padding: 0 10px;
+}
+
+.left {
+  width: 65%;
+}
+
+.right {
+  width: 35%;
+}
+.down{
+padding: 0 10px;
+width: 100%;
+}
+
+.row {margin: 0 -5px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ 
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+ // background-color: #f1f1f1;
+}
+</style>

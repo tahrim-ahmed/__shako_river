@@ -1,0 +1,6 @@
+[20-Sep-2020 12:17:17 America/Toronto] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_stmt::fetchAll() in /home/rivercom/shako.rivercommunication.com/api/server_side_load.php:435
+Stack trace:
+#0 /home/rivercom/shako.rivercommunication.com/api/server_side_load.php(333): SSP::sql_exec(Object(mysqli), Array, 'SELECT `retaile...')
+#1 /home/rivercom/shako.rivercommunication.com/api/get_call.php(49): SSP::complex(Array, Object(mysqli), 'call_info', 'call_id', Array, 'retailer_group ...')
+#2 {main}
+  thrown in /home/rivercom/shako.rivercommunication.com/api/server_side_load.php on line 435

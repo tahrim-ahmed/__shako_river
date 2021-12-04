@@ -1,0 +1,260 @@
+<?php
+
+include 'header.php';
+if (isset($_SESSION['type']) && $_SESSION['type'] == "admin" || $_SESSION['type'] == "user")
+
+{
+
+
+global $r_code, $r_name, $r_proprietor, $r_bazar, $r_cell, $d_name, $d_cell, $r_territory, $r_region, $r_group, $f_name, $f_cell, $r_code, $error, $entry, $r_own, $r_other, $r_total, $r_count, $cnt,$r_groups,
+  
+//  $slab_id, $slab_gift, $r_total_next, $slab_id_next, $slab_gift_next,
+  $c_slab, $a_slab, $n_slab, $n_a_slab, $gift, $a_gift, $slab_n_gift, $r_n_own, $a_slab_n_gift, $r_a_n_own;
+
+
+if (isset($_GET['id'])) {
+$id = $_GET['id'];
+$sql = "SELECT * FROM `retailer` r,`distributor` d,`fa` f WHERE r.`r_code`='$id' AND r.`d_code`=d.`d_code` AND r.`f_code`=f.`f_code`";
+  $result = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($result)>0){
+
+while($row = mysqli_fetch_assoc($result)) {
+
+          $r_code= $row['r_code'];
+          $r_group= $row['r_group'];
+
+          $r_territory= $row['r_territory'];
+          $r_region= $row['r_region'];
+
+            $r_name= $row['r_name'];
+            $r_bazar= $row['r_bazar'];
+
+          $r_proprietor= $row['r_proprietor'];
+          $r_cell= $row['r_cell'];
+
+          $d_name= $row['d_name'];
+          $d_cell= $row['d_cell'];
+
+          $f_name= $row['f_name'];
+            $f_cell= $row['f_cell'];
+          }
+        }
+      }
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/call.css">
+
+
+</head>
+<body>
+
+  <div class="column left">
+    <div class="card">
+
+      <fieldset>
+      <legend>Retailer Information</legend>
+      <table class="table table-sm table-striped table-bordered">
+        <tbody style="text-align: left">
+          <tr>
+          <td>Retailer Code: </td> <td><strong><?php echo $r_code; ?> </strong></td>  
+          <td>Group: </td> <td><strong><?php echo $r_group; ?> </strong></td>
+          </tr>
+
+          <tr>
+            <td>Territory: </td> <td><strong><?php echo $r_territory; ?> </strong></td>
+            <td>Region: </td> <td><strong><?php echo $r_region; ?> </strong> </td>
+          </tr>
+
+
+
+          <tr>
+            <td>Retailer Name: </td> <td><strong><?php echo $r_name; ?> </strong></td>
+            <td>Retailer Bazar: </td> <td><strong><?php echo $r_bazar; ?> </strong></td>
+          </tr>
+
+
+          <tr>
+          <td>Proprietor Name: </td> <td><strong><?php echo $r_proprietor; ?> </strong></td>
+          <td>Retailer Cell: </td>
+          <td ><strong> 
+            <?php echo "<a href='tel:+880.$r_cell'>$r_cell</a>"; ?>
+          </strong></td>
+
+          </tr>
+
+          <tr>
+            <td>Distributor Name: </td> <td> <strong><?php echo $d_name; ?> </strong></td>
+            <td>Distributor Cell: </td>
+             <td><strong>
+            <?php echo "<a href='tel:+880.$d_cell'>$d_cell</a>"; ?>
+            </strong></td>
+
+          </tr>
+
+
+          <tr>
+            <td>FA Name: </td> <td> <strong><?php echo $f_name; ?> </strong></td>
+            <td>FA Cell: </td>
+             <td><strong>
+            <?php echo "<a href='tel:+880.$f_cell'>$f_cell</a>"; ?>
+            </strong></td>
+    
+          </tr>
+
+           <tr>
+            <td>Own Purchase: </td> <td> <strong><?php echo $r_own; ?> </strong></td>
+            <td>Other Purchase: </td> <td> <strong><?php echo $r_other; ?> </strong></td>
+          </tr>
+
+          <tr>
+            <td>Total Purchase: </td> <td> <strong><?php echo $r_total; ?> </strong></td>
+          <!--  <td>Current Slab: </td> <td> <strong><?php echo $c_slab;?></strong></td>  -->
+            <td>Current Slab: <strong><?php echo $c_slab;?></strong></td> <td>Next Slab: <strong><?php echo $n_slab;?></strong></td>
+          </tr>
+           <tr> 
+            <td colspan="">Current Gift: </td> <td colspan="3"> <strong><?php echo $gift;?></strong></td>
+          </tr>
+          
+
+          <tr>
+            <td colspan="">Next Slab Gift: </td> <td colspan="2"> <strong><?php echo $slab_n_gift;?></strong></td>
+            <td>Next Slab Amount: <strong><?php echo $r_n_own;?></strong></td>
+          <!--  <td>Next Slab: </td> <td> <strong><?php echo $n_slab;?></strong></td> -->
+          </tr>
+        <!--   <tr> 
+            <td colspan="">Next Slab Gift: </td> <td colspan="3"> <strong><?php echo $slab_n_gift;?></strong></td>
+          </tr>
+      -->
+           <tr> 
+            <td colspan="">Aditional Gift: </td> <td colspan="3"> <strong><?php echo $a_gift;?></strong></td>
+          </tr>
+        <!--  <tr>
+            <td>Current Ad. Slab: </td> <td> <strong><?php echo $a_slab;?></strong></td>
+            <td>Next Ad. Slab: <strong><?php echo $n_a_slab;?> </strong></td>
+            <td>Next Amount: <strong><?php echo $r_a_n_own;?></strong></td>
+          </tr>
+        -->
+          <tr>  
+            <td colspan="">Next Ad. Slab Gift: </td> <td colspan="2"> <strong><?php echo $a_slab_n_gift;?></strong></td>
+            <td>Next Amount: <strong><?php echo $r_a_n_own;?></strong></td>
+          </tr>
+        <!--
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        --> 
+        </tbody>
+    </table>  
+    </fieldset>
+    </div>
+
+<br>
+
+      <div class="card">
+
+    <fieldset>
+      <legend>Call Data</legend>
+    <table class="table table-sm table-hover table-bordered">
+    <thead >
+      <th width="5%">ID</th>
+      <th width="15%">Date</th>
+      <th width="35%">Remarks</th>
+      <th width="15%">Action</th>
+      <th width="15%">Status</th>
+      <th width="15%">User</th>
+    </thead>
+
+    <tbody>
+      
+    </tbody>
+
+
+  
+      </table>
+      </fieldset>
+
+    </div>
+
+  </div>
+
+  <div class="column right">
+    <div class="card">
+    
+    <form id="add_data" method="POST">
+     <fieldset>
+      <legend>Input Data</legend>
+      <table class="table table-sm table-bordered">
+
+      <tbody>
+      <tr>
+      <td><strong>Group Name</strong></td>
+      <td colspan="2"><select class="form-control form-control-sm" name="r_group">
+      <option value=<?php echo $r_group; ?>> <?php echo $r_group; ?></option>
+
+      <option value="SHAKO-1-BG">SHAKO-1-BG</option>
+      <option value="SHAKO-2-BR">SHAKO-2-BR</option>
+      <option value="SHAKO-3-RP">SHAKO-3-RP</option>
+      <option value="SHAKO-4-RP">SHAKO-4-RP</option>
+      <option value="SHAKO-5-KT">SHAKO-5-KT</option>
+      <option value="SHAKO-6-KT">SHAKO-6-KT</option>
+      <option value="SHAKO-7-KT">SHAKO-7-KT</option>
+      <option value="SHAKO-8-RS">SHAKO-8-RS</option>
+      <option value="SHAKO-9-RS">SHAKO-9-RS</option>
+      <option value="SHAKO-10-RC">SHAKO-10-RC</option>
+      <option value="SHAKO-22-CM">SHAKO-11-CM</option>
+      <option value="SHAKO-12-JC">SHAKO-12-JC</option>
+      <option value="SHAKO-13-JS">SHAKO-13-JS</option>
+      <option value="SHAKO-14-JS">SHAKO-14-JS</option>
+      <option value="SHAKO-15-MS">SHAKO-15-MS</option>
+      <option value="SHAKO-16-MS">SHAKO-16-MS</option>
+      <option value="SHAKO-17-MS">SHAKO-17-MS</option>
+      <option value="SHAKO-18-DK">SHAKO-18-DK</option>
+    </select></td>
+      <td>
+          <input type="submit" name="search" class="btn btn-primary btn-sm" value="Search">
+          </td>
+        </tr>
+        <tr>
+          <th>Retailer Code</th>
+          <th colspan="4">Data Input</th>
+       </tr>
+        <?php
+              if(isset($_POST['search'])){
+               $r_group=$_POST['r_group'];
+            $sql1= "SELECT r_code FROM retailer where r_group='$r_group'";
+            $retailer=mysqli_query($conn, $sql1);
+
+             if (mysqli_num_rows($retailer)>0){
+                  while($row = mysqli_fetch_assoc($retailer)) {
+                       $r_code= $row['r_code'];
+               
+               echo "<tr>";
+              
+               echo "<td><b><a href='call.php?id={$row['r_code']}'>{$row['r_code']}</a></b></td>";
+               echo "</tr>";
+             }
+           }
+         }
+         ?>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
+
+<?php
+} else {
+    header('Location: disconnect.php');
+}
+
+?>
